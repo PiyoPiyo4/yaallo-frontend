@@ -8,8 +8,8 @@ import { FiPhoneCall } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 
 // import { IoMdInformationCircleOutline, GoShieldCheck, IoSettingsOutline, MdOutlineMail, IoMdHelpCircleOutline, FiPhoneCall } from 'react-icons/all';
-import { Box, Typography, IconButton, useTheme } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom'; // Import for navigation
+import { Box, Typography, useTheme } from '@mui/material';
+// import { useLocation, useNavigate } from 'react-router-dom'; // Import for navigation
 
 const menuItems = [
   { title: 'About Yaallo', icon: <IoMdInformationCircleOutline size="30px" /> },
@@ -46,8 +46,8 @@ const ItemComponent = ({ title, icon, clickHandler }) => {
 
 function MobileMenuPage() {
   const theme = useTheme();
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
   // const handleMenuItemClick = (title) => {
   //   // Handle navigation or action based on title

@@ -4,10 +4,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+// import HomeIcon from '@mui/icons-material/Home';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
-import SettingsIcon from '@mui/icons-material/Settings';
+// import SettingsIcon from '@mui/icons-material/Settings';
 import logo from '../assets/yaallo.jpeg'
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -18,7 +18,7 @@ import { RiHomeLine } from "react-icons/ri";
 import { BiMessageAltDetail } from "react-icons/bi";
 import { FiBell } from "react-icons/fi";
 import { PiBagSimple } from "react-icons/pi";
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import { CgMenu } from "react-icons/cg";
 
 import MobileMenuPage from '../Pages/MobileMenuPage';

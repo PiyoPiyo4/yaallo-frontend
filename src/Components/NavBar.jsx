@@ -7,13 +7,13 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Divider, Grid, Menu, MenuItem, Paper } from '@mui/material';
+import { Divider, Menu, MenuItem, Paper } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from '../assets/yaallo.jpeg'
 import { ButtonGroup } from '@mui/material';
-import styles from './styles/NavBar.css'
+// import styles from './styles/NavBar.css'
 
 import { IoMdInformationCircleOutline, IoMdHelpCircleOutline } from "react-icons/io";
 import { GoShieldCheck } from "react-icons/go";
