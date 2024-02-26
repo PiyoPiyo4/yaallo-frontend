@@ -1,0 +1,11 @@
+.iconContainer{
+    width: 38px;
+    height: 38px;
+    border-radius: 25%;
+    background-color: #f8ce4e;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+}
