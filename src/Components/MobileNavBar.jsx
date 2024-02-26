@@ -21,8 +21,6 @@ import { PiBagSimple } from "react-icons/pi";
 // import MenuIcon from '@mui/icons-material/Menu';
 import { CgMenu } from "react-icons/cg";
 
-import MobileMenuPage from '../Pages/MobileMenuPage';
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -37,9 +35,13 @@ const theme = createTheme({
   },
 });
 
-function BotNavBar() {
-  const [activeSection, setActiveSection] = React.useState('home');
-
+function BotNavBar({ onSectionChange }) {
+  // const [activeSection, setActiveSection] = React.useState('home');
+  
+  const handleSectionClick = (section) => {
+    // setActiveSection(section);
+    onSectionChange(section); // Call passed-in onSectionChange prop
+  };
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" sx={{ boxShadow: 'none' }}>
@@ -63,23 +65,26 @@ function BotNavBar() {
           </Typography>
         </Toolbar>
       </AppBar>
-      {activeSection === 'menu' && <MobileMenuPage/>}
+      {/* {activeSection === 'menu' && <MobileMenuPage/>} */}
+      {/* {activeSection === 'home' && <HomeContent/>} */}
       <BottomNavigation
         sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.12)', }}
       >
         <BottomNavigationAction
-          onClick={() => setActiveSection('home')}
-          selected={activeSection === 'home'}
-          sx={{ fontSize: 30 }} 
+          // onClick={() => setActiveSection('home')}
+          // selected={activeSection === 'home'}
+          onClick={() => handleSectionClick('home')}
+          sx={{ fontSize: 25 }} 
           icon={<RiHomeLine color="black" />} 
           disableRipple/>
-        <BottomNavigationAction sx={{ fontSize: 30 }} icon={<BiMessageAltDetail color="black"/>}  disableRipple/>
-        <BottomNavigationAction sx={{ fontSize: 30 }} icon={<FiBell color="black"/>} disableRipple/>
-        <BottomNavigationAction sx={{ fontSize: 30 }} icon={<PiBagSimple color="black"/>} disableRipple/>
+        <BottomNavigationAction sx={{ fontSize: 25 }} icon={<BiMessageAltDetail color="black"/>}  disableRipple/>
+        <BottomNavigationAction sx={{ fontSize: 25 }} icon={<FiBell color="black"/>} disableRipple/>
+        <BottomNavigationAction sx={{ fontSize: 25 }} icon={<PiBagSimple color="black"/>} disableRipple/>
         <BottomNavigationAction
-          onClick={() => setActiveSection('menu')}
-          selected={activeSection === 'menu'}
-          sx={{ fontSize: 30 }} 
+          // onClick={() => setActiveSection('menu')}
+          // selected={activeSection === 'menu'}
+          onClick={() => handleSectionClick('mobileMenu')}
+          sx={{ fontSize: 25 }} 
           icon={<CgMenu color="#f8ce4e"/>} 
           disableRipple/>
       </BottomNavigation>

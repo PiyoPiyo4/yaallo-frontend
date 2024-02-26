@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import loadable from '@loadable/component'
-import useMediaQuery from '@mui/material/useMediaQuery';
-// import '../fonts/fonts.css';
-// import './styles/MainPageCSS.css'
+import { Box, useMediaQuery } from '@mui/material';
+import Collapse from '@mui/material/Collapse';
 
-const TopNavBar = loadable(() => import('../Components/NavBar'))
-const BotNavBar = loadable(() => import('../Components/MobileNavBar'))
+
+const NavBar = loadable(() => import('../Components/NavBar'))
+const MobileNavBar = loadable(() => import('../Components/MobileNavBar'))
+const HomeContent = loadable(() => import('./HomeContent'))
+const MobileMenuPage = loadable(()=> import('./MobileMenuPage'))
 
 const HomePage = () => {
   const mobileScreen = useMediaQuery('(max-width: 850px)');
+  const [activeSection, setActiveSection] = React.useState('home');
+
+  const handleSectionChange = (newSection) => {
+    setActiveSection(newSection);
+  };
 
   return (<>
   <div>
-    { !mobileScreen && <TopNavBar/>}
-    { mobileScreen && <BotNavBar/>}
+    { !mobileScreen && <NavBar onSectionChange={handleSectionChange}/>}
+    { mobileScreen && <MobileNavBar onSectionChange={handleSectionChange}/>}
+    {activeSection === 'home' && <HomeContent/>}
+    {activeSection === 'mobileMenu' && <MobileMenuPage/> }
   </div>
   </>)
 }

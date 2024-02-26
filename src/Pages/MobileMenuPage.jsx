@@ -6,9 +6,11 @@ import { GoShieldCheck } from "react-icons/go";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
-
+import { FaRegTrashAlt } from "react-icons/fa";
+import { MdKeyboardArrowRight } from "react-icons/md";
 // import { IoMdInformationCircleOutline, GoShieldCheck, IoSettingsOutline, MdOutlineMail, IoMdHelpCircleOutline, FiPhoneCall } from 'react-icons/all';
 import { Box, Typography } from '@mui/material';
+import logo from '../assets/yaallo.jpeg'
 // import { useLocation, useNavigate } from 'react-router-dom'; // Import for navigation
 
 const menuItems = [
@@ -18,48 +20,43 @@ const menuItems = [
   { title: 'Help Center', icon: <MdOutlineMail size="30px" /> },
   { title: 'FAQs', icon: <IoMdHelpCircleOutline size="30px" /> },
   { title: 'Contact Us', icon: <FiPhoneCall size="30px" /> },
+  { title: 'Delete Account', icon: <FaRegTrashAlt  size="30px" /> },
 ];
 
 const ItemComponent = ({ title, icon, clickHandler }) => {
   return (
     <MenuItem onClick={clickHandler}>
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <div style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '25%',
-              backgroundColor: '#f8ce4e',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              boxShadow: 'none',
-            }}>
-          {icon}
-        </div>
-        <Typography variant="body1" sx={{ ml: 2 }}>
-          {title}
-        </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '25%',
+                backgroundColor: '#f5ba05',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                boxShadow: 'none',
+              }}>
+            {icon}
+          </div>
+          <Typography variant="body1" sx={{ ml: 2 }}>
+            {title}
+          </Typography>
+        </Box>
+        <Box sx={{ ml: 'auto' }}>
+          <MdKeyboardArrowRight sx={{ }} />
+        </Box>
       </Box>
     </MenuItem>
   );
 };
 
 function MobileMenuPage() {
-  // const theme = useTheme();
-  // const navigate = useNavigate();
-  // const location = useLocation();
-
-  // const handleMenuItemClick = (title) => {
-  //   // Handle navigation or action based on title
-  //   const pathToNavigate = `/menu/${title.toLowerCase()}`; // Dynamically construct path
-  //   if (location.pathname !== pathToNavigate) {
-  //     navigate(pathToNavigate); // Navigate only if different path
-  //   }
-  // };
 
   return (
     <div>
-      {/* Other page content, if any */}
+      <img src={logo} style={{ height: '80px', cursor: 'pointer' }} alt='LogoYaallo'/>
       <Box sx={{ mx: 2, my: 4 }}>
         {menuItems.map((item) => (
           <React.Fragment key={item.title}>
@@ -68,7 +65,6 @@ function MobileMenuPage() {
                 title={item.title}
                 icon={item.icon}
                 disableRipple
-                // clickHandler={() => handleMenuItemClick(item.title)} // Pass handler
               />
             <Divider variant="middle" />
           </React.Fragment>

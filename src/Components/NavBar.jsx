@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from '../assets/yaallo.jpeg'
 import { ButtonGroup } from '@mui/material';
-// import styles from './styles/NavBar.css'
+import './styles/NavBar.css'
 
 import { IoMdInformationCircleOutline, IoMdHelpCircleOutline } from "react-icons/io";
 import { GoShieldCheck } from "react-icons/go";
@@ -21,7 +21,39 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 
-// Costum Theme for the Navigation Bar
+const menuItems = [
+  { title: 'About Yaallo', icon: <IoMdInformationCircleOutline size="25px" /> },
+  { title: 'Data Privacy', icon: <GoShieldCheck size="25px" /> },
+  { title: 'Settings', icon: <IoSettingsOutline size="25px" /> },
+  { title: 'Help Center', icon: <MdOutlineMail size="25px" /> },
+  { title: 'FAQs', icon: <IoMdHelpCircleOutline size="25px" /> },
+  { title: 'Contact Us', icon: <FiPhoneCall size="25px" /> },
+];
+
+const ItemComponent = ({ title, icon, clickHandler }) => {
+  return (
+    <MenuItem onClick={clickHandler} sx={{ '&:hover': { backgroundColor: 'transparent'} }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', mb: -1, mt: -1}}>
+        <div style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '25%',
+              backgroundColor: '#f5ba05',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              boxShadow: 'none',
+            }}>
+          {icon}
+        </div>
+        <Typography sx={{ ml: 2 , fontSize: '13px', '&:hover': { color: 'blue' } }}>
+          {title}
+        </Typography>
+      </Box>
+    </MenuItem>
+  );
+};
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -58,7 +90,7 @@ function Navbar() {
       <AppBar position="static" sx={{ boxShadow: 'none' }}>
         <Toolbar>
           {/* Left Components */}
-          <div style={{ flexGrow: 2, flexBasis: 0}}></div>
+          <div style={{ flexGrow: 3, flexBasis: 0}}></div>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 2}}>
           <img src={logo} style={{ height: '40px', cursor: 'pointer' }} alt='LogoYaallo'/>
             <TextField
@@ -78,10 +110,10 @@ function Navbar() {
           {/* Right Components */}
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', flexGrow: 2, boxShadow: 'none' }}>
             <ButtonGroup disableRipple >
-              <Button color="secondary" variant='text'>Home</Button>
-              <Button color="secondary" variant='text'>Massage</Button>
-              <Button color="secondary" variant='text'>Notification</Button>
-              <Button color="secondary" variant='text'>Jobs</Button>
+              <Button color="secondary" variant='text' sx={{ textTransform: 'none', '&:hover': { backgroundColor: 'transparent'} }}>Home</Button>
+              <Button color="secondary" variant='text' sx={{ textTransform: 'none', '&:hover': { backgroundColor: 'transparent'} }}>Massage</Button>
+              <Button color="secondary" variant='text' sx={{ textTransform: 'none', '&:hover': { backgroundColor: 'transparent'} }}>Notification</Button>
+              <Button color="secondary" variant='text' sx={{ textTransform: 'none', '&:hover': { backgroundColor: 'transparent'} }}>Jobs</Button>
             </ButtonGroup>
             <IconButton color="inherit" disableRipple>
               <AccountCircleIcon />
@@ -95,50 +127,26 @@ function Navbar() {
             </IconButton>
             {/* Menu Dropdown */}
             <Paper sx={{ boxShadow: 'none', borderRadius: '4px'}}>
-            <Menu
-              anchorEl={menuDrop}
-              open={Boolean(menuDrop)}
-              onClose={handleMenuClose}
-            >
-              <MenuItem onClick={handleMenuClose} sx={{ display: 'flex', alignItems: 'center',boxShadow: 'none' }}>
-                <div className='iconContainer'>
-                  <IoMdInformationCircleOutline size="30px"/>
-                </div>
-                About yaallO</MenuItem>
-              <Divider variant="middle" component="li"/>
-              <MenuItem onClick={handleMenuClose}>
-                <div className='iconContainer'>
-                  <GoShieldCheck size="30px"/>
-                </div>
-                Data Privacy</MenuItem>
-              <Divider variant="middle" component="li"/>
-              <MenuItem onClick={handleMenuClose}>
-                <div className='iconContainer'>
-                  <IoSettingsOutline size="30px"/>
-                </div>
-                Setting</MenuItem>
-              <Divider variant="middle" component="li"/>
-              <MenuItem onClick={handleMenuClose}>
-                <div className='iconContainer'>
-                  <MdOutlineMail size="30px"/>
-                </div>
-                Help Center</MenuItem>
-              <Divider variant="middle" component="li"/>
-              <MenuItem onClick={handleMenuClose}>
-                <div className='iconContainer'>
-                  <IoMdHelpCircleOutline size="30px"/>
-                </div>
-                FAQs</MenuItem>
-              <Divider variant="middle" component="li"/>
-              <MenuItem onClick={handleMenuClose}>
-              <div className='iconContainer'>
-                  <FiPhoneCall size="30px"/>
-                </div>
-                Contact Us</MenuItem>
-            </Menu>
+              <Menu
+                anchorEl={menuDrop}
+                open={Boolean(menuDrop)}
+                onClose={handleMenuClose}
+              >
+                {menuItems.map((item) => (
+                  <React.Fragment key={item.title}>
+                      <ItemComponent
+                        key={item.title}
+                        title={item.title}
+                        icon={item.icon}
+                        disableRipple
+                      />
+                    <Divider variant="middle" />
+                  </React.Fragment>
+                ))}
+              </Menu>
             </Paper>
           </Box>
-          <div style={{ flexGrow: 2, flexBasis: 0}}></div>
+          <div style={{ flexGrow: 3, flexBasis: 0}}></div>
         </Toolbar>
       </AppBar>
     </ThemeProvider>
