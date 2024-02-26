@@ -29,18 +29,19 @@ const theme = createTheme({
     secondary: {
       main: '#000', 
     },
-    bottomNavIcon: {
-      main: '#fff', // Default color for bottom navigation icons
-    },
+    // bottomNavIcon: {
+    //   main: '#fff', 
+    //   selected: '#f8ce4e',
+    // },
   },
 });
 
 function BotNavBar({ onSectionChange }) {
-  // const [activeSection, setActiveSection] = React.useState('home');
+  const [activeSection, setActiveSection] = React.useState('home');
   
   const handleSectionClick = (section) => {
-    // setActiveSection(section);
-    onSectionChange(section); // Call passed-in onSectionChange prop
+    setActiveSection(section);
+    onSectionChange(section);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -72,14 +73,14 @@ function BotNavBar({ onSectionChange }) {
       >
         <BottomNavigationAction
           // onClick={() => setActiveSection('home')}
-          // selected={activeSection === 'home'}
+          // selected={color= ''}
           onClick={() => handleSectionClick('home')}
           sx={{ fontSize: 25 }} 
-          icon={<RiHomeLine color="black" />} 
+          icon={<RiHomeLine color={activeSection === 'home' ? '#f8ce4e' : 'black'}/>} 
           disableRipple/>
-        <BottomNavigationAction sx={{ fontSize: 25 }} icon={<BiMessageAltDetail color="black"/>}  disableRipple/>
-        <BottomNavigationAction sx={{ fontSize: 25 }} icon={<FiBell color="black"/>} disableRipple/>
-        <BottomNavigationAction sx={{ fontSize: 25 }} icon={<PiBagSimple color="black"/>} disableRipple/>
+        <BottomNavigationAction sx={{ fontSize: 25 }} onClick={() => handleSectionClick('message')}icon={<BiMessageAltDetail color={activeSection === 'message' ? '#f8ce4e' : 'black'} />}  disableRipple/>
+        <BottomNavigationAction sx={{ fontSize: 25 }} onClick={() => handleSectionClick('notification')}icon={<FiBell color={activeSection === 'notification' ? '#f8ce4e' : 'black'}/>} disableRipple/>
+        <BottomNavigationAction sx={{ fontSize: 25 }} onClick={() => handleSectionClick('jobs')}icon={<PiBagSimple color={activeSection === 'jobs' ? '#f8ce4e' : 'black'}/>} disableRipple/>
         <BottomNavigationAction
           // onClick={() => setActiveSection('menu')}
           // selected={activeSection === 'menu'}

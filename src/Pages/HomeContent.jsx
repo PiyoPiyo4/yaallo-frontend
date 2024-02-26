@@ -17,13 +17,13 @@ const HomeContent = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => setIsCollapsed(true), 2000); // Delay by 5 seconds
+    const timeoutId = setTimeout(() => setIsCollapsed(true), 1000);
 
     return () => clearTimeout(timeoutId);
   }, []);
 
   return (<>
-    <Collapse in={isCollapsed} sx={{ position: 'absolute', width: '100%', timeout: '90000ms' }}>
+    <Collapse in={isCollapsed} sx={{ position: 'absolute', width: '100%', timeout: '50' }}>
         {icon}
     </Collapse>
   </>)
