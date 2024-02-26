@@ -11,17 +11,9 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 // import { IoMdInformationCircleOutline, GoShieldCheck, IoSettingsOutline, MdOutlineMail, IoMdHelpCircleOutline, FiPhoneCall } from 'react-icons/all';
 import { Box, Typography } from '@mui/material';
 import logo from '../assets/yaallo.jpeg'
+import { useMediaQuery } from '@mui/material';
 // import { useLocation, useNavigate } from 'react-router-dom'; // Import for navigation
 
-const menuItems = [
-  { title: 'About Yaallo', icon: <IoMdInformationCircleOutline size="30px" /> },
-  { title: 'Data Privacy', icon: <GoShieldCheck size="30px" /> },
-  { title: 'Settings', icon: <IoSettingsOutline size="30px" /> },
-  { title: 'Help Center', icon: <MdOutlineMail size="30px" /> },
-  { title: 'FAQs', icon: <IoMdHelpCircleOutline size="30px" /> },
-  { title: 'Contact Us', icon: <FiPhoneCall size="30px" /> },
-  { title: 'Delete Account', icon: <FaRegTrashAlt  size="30px" /> },
-];
 
 const ItemComponent = ({ title, icon, clickHandler }) => {
   return (
@@ -40,12 +32,12 @@ const ItemComponent = ({ title, icon, clickHandler }) => {
               }}>
             {icon}
           </div>
-          <Typography variant="body1" sx={{ ml: 2 }}>
+          <Typography variant="body1" sx={{ ml: 3 }}>
             {title}
           </Typography>
         </Box>
         <Box sx={{ ml: 'auto' }}>
-          <MdKeyboardArrowRight sx={{ }} />
+          <MdKeyboardArrowRight size="25px" />
         </Box>
       </Box>
     </MenuItem>
@@ -53,7 +45,16 @@ const ItemComponent = ({ title, icon, clickHandler }) => {
 };
 
 function MobileMenuPage() {
-
+  const menuItems = [
+    { title: 'About Yaallo', icon: <IoMdInformationCircleOutline size="25px" /> },
+    { title: 'Data Privacy', icon: <GoShieldCheck size="25px" /> },
+    { title: 'Settings', icon: <IoSettingsOutline size="25px" /> },
+    { title: 'Help Center', icon: <MdOutlineMail size="25px" /> },
+    { title: useMediaQuery('(min-width: 430px)') ? 'FAQs (Frequently Asked Question)' : 'FAQs', icon: <IoMdHelpCircleOutline size="25px" /> },
+    { title: 'Contact Us', icon: <FiPhoneCall size="25px" /> },
+    { title: 'Delete Account', icon: <FaRegTrashAlt  size="25px" /> },
+  ];
+  
   return (
     <div>
       <img src={logo} style={{ height: '80px', cursor: 'pointer' }} alt='LogoYaallo'/>
