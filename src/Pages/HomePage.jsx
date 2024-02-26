@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import loadable from '@loadable/component'
-import { Box, useMediaQuery } from '@mui/material';
-import Collapse from '@mui/material/Collapse';
+import { useMediaQuery } from '@mui/material';
+// import Collapse from '@mui/material/Collapse';
 
 
 const NavBar = loadable(() => import('../Components/NavBar'))
