@@ -68,7 +68,7 @@ function BotNavBar({ onSectionChange }) {
       {/* {activeSection === 'menu' && <MobileMenuPage/>} */}
       {/* {activeSection === 'home' && <HomeContent/>} */}
       <BottomNavigation
-        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.12)', }}
+        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.12)', zIndex: 100 }}
       >
         <BottomNavigationAction
           // onClick={() => setActiveSection('home')}
