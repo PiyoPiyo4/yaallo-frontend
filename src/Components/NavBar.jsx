@@ -71,6 +71,17 @@ const theme = createTheme({
         },
       },
     },
+    // MuiTextField: {
+    //   styleOverrides: {
+    //     root: {
+    //       // Removed unnecessary nesting (`.MuiOutlinedInput-notchedOutline`)
+    //       border: 'none',
+    //       '&.Mui-focused': {
+    //         border: '2px solid black', // Apply styles directly
+    //       },
+    //     },
+    //   },
+    // },
   },
 });
 
@@ -94,16 +105,19 @@ function Navbar() {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 2}}>
           <img src={logo} style={{ height: '40px', cursor: 'pointer' }} alt='LogoYaallo'/>
             <TextField
-              sx={{ ml: 2 }}
+              sx={{ ml: 2 , backgroundColor: '#d9d9d9', borderRadius: '5%' }}
               size="small"
               placeholder="Search"
-              InputProps={{
-                startAdornment: (
-                  <IconButton edge="start" sx={{ color: 'text.primary' }}>
-                    <SearchIcon />
-                  </IconButton>
-                ),
+              onFocus={() => {
+                console.log('Text field focused!'); // Print message to console
               }}
+              // InputProps={{
+              //   startAdornment: (
+              //     <IconButton edge="start" sx={{ color: 'text.primary' }}>
+              //       <SearchIcon />
+              //     </IconButton>
+              //   ),
+              // }}
             />
           </Typography>
 
