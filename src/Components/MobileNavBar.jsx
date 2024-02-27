@@ -51,9 +51,8 @@ function BotNavBar({ onSectionChange }) {
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" sx={{ boxShadow: 'none' , mt: 1 }}>
-        <Toolbar>
-          
-          <Typography variant="h6" noWrap component="div" sx={{flexGrow : 3, flexBasis: 0}}>
+        <Toolbar sx={{ padding: 0}}>
+          <Typography variant="h6" noWrap component="div" sx={{ padding: 0}}>
             {/* <Box sx={{ display: 'flex', justifyContent: 'space-between' }}> */}
               <img src={logo} style={{ height: '50px', cursor: 'pointer' }} alt='LogoYaallo'/>
               <TextField
@@ -90,7 +89,7 @@ function BotNavBar({ onSectionChange }) {
       {/* {activeSection === 'menu' && <MobileMenuPage/>} */}
       {/* {activeSection === 'home' && <HomeContent/>} */}
       <BottomNavigation
-        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.12)', zIndex: 100 }}
+        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.12)', zIndex: 100, pl: 16 , pr: 16}}
       >
         <BottomNavigationAction
           // onClick={() => setActiveSection('home')}
