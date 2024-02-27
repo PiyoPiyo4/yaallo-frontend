@@ -71,15 +71,15 @@ const theme = createTheme({
         },
       },
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          '& .MuiOutlinedInput-notchedOutline': {
-            border: 'none',
-          },
-        },
-      },
-    },
+    // MuiOutlinedInput: {
+    //   styleOverrides: {
+    //     root: {
+    //       '& .MuiOutlinedInput-notchedOutline': {
+    //         border: 'none',
+    //       },
+    //     },
+    //   },
+    // },
   },
 });
 
@@ -103,16 +103,21 @@ function Navbar() {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 2}}>
           <img src={logo} style={{ height: '40px', cursor: 'pointer' }} alt='LogoYaallo'/>
             <TextField
-              sx={{ ml: 2 , backgroundColor: '#d9d9d9', borderRadius: '5%' }}
-              size="small"
+              sx={{ ml: 2 , mt: 2 , backgroundColor: '#d9d9d9', borderRadius: '5%',
+                '& .MuiInputBase-root': {
+                  height: 15,
+                  fontSize: 10,
+                },
+                '& .MuiOutlinedInput-notchedOutline': {
+                    border: 'none',
+                },
+                '& .Mui-focused': {
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    border: '2px solid black !important',
+                    },
+                },
+              }}
               placeholder="Search"
-              // InputProps={{
-              //   startAdornment: (
-              //     <IconButton edge="start" sx={{ color: 'text.primary' }}>
-              //       <SearchIcon />
-              //     </IconButton>
-              //   ),
-              // }}
             />
           </Typography>
 

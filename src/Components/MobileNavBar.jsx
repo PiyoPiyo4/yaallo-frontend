@@ -11,7 +11,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import logo from '../assets/yaallo.jpeg'
 import TextField from '@mui/material/TextField';
 // import IconButton from '@mui/material/IconButton';
-import { Box } from '@mui/material';
+// import { Box } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { RiHomeLine } from "react-icons/ri";
@@ -52,11 +52,25 @@ function BotNavBar({ onSectionChange }) {
     <ThemeProvider theme={theme}>
       <AppBar position="static" sx={{ boxShadow: 'none' }}>
         <Toolbar>
-          <Typography variant="h6" noWrap sx={{ display: 'flex', justifyContent: 'center' , flexGrow : 1, flexBasis: 0}}>
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <img src={logo} style={{ height: '40px', cursor: 'pointer' }} alt='LogoYaallo'/>
+          
+          <Typography variant="h6" noWrap component="div" sx={{flexGrow : 3, flexBasis: 0}}>
+            {/* <Box sx={{ display: 'flex', justifyContent: 'space-between' }}> */}
+              <img src={logo} style={{ height: '40px', cursor: 'pointer' }} alt='LogoYaallo'/>
               <TextField
-                sx={{ ml: 2, backgroundColor: '#d9d9d9', borderRadius: '5%' }}
+                sx={{ ml: 2, mt: 2  , backgroundColor: '#d9d9d9', borderRadius: '5%',
+                '& .MuiInputBase-root': {
+                  height: 15,
+                  fontSize: 10,
+                },
+                '& .MuiOutlinedInput-notchedOutline': {
+                  border: 'none',
+                },
+                '& .Mui-focused': {
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    border: '2px solid #000 !important',
+                    },
+                },
+              }}
                 size="small"
                 placeholder="Search"
                 // InputProps={{
@@ -67,8 +81,9 @@ function BotNavBar({ onSectionChange }) {
                 //   ),
                 // }}
               />
-              </Box>
+            {/* </Box> */}
           </Typography>
+          {/* <div style={{ flexGrow: 1, flexBasis: 0}}></div> */}
         </Toolbar>
       </AppBar>
       {/* {activeSection === 'menu' && <MobileMenuPage/>} */}
