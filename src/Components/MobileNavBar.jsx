@@ -56,7 +56,7 @@ function BotNavBar({ onSectionChange }) {
             {/* <Box sx={{ display: 'flex', justifyContent: 'space-between' }}> */}
               <img src={logo} style={{ height: '50px', cursor: 'pointer' }} alt='LogoYaallo'/>
               <TextField
-                sx={{ ml: 2, mt: 2  , backgroundColor: '#d9d9d9', borderRadius: '5px',
+                sx={{ ml: 1, mt: 2  , backgroundColor: '#d9d9d9', borderRadius: '5px',
                 '& .MuiInputBase-root': {
                   height: 20,
                   width: 200,
