@@ -89,13 +89,13 @@ function BotNavBar({ onSectionChange }) {
       {/* {activeSection === 'menu' && <MobileMenuPage/>} */}
       {/* {activeSection === 'home' && <HomeContent/>} */}
       <BottomNavigation
-        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.12)', zIndex: 100, pl: 16 , pr: 16}}
+        sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, boxShadow: '0px 2px 15px rgba(0, 0, 0, 0.12)', zIndex: 100, pl: 2 , pr: 2}}
       >
         <BottomNavigationAction
           // onClick={() => setActiveSection('home')}
           // selected={color= ''}
           onClick={() => handleSectionClick('home')}
-          sx={{ fontSize: 25 }} 
+          sx={{ fontSize: 25, ml: 2 }} 
           icon={<RiHomeLine color={activeSection === 'home' ? '#f8ce4e' : 'black'}/>} 
           disableRipple/>
         <BottomNavigationAction sx={{ fontSize: 25 }} onClick={() => handleSectionClick('message')}icon={<BiMessageAltDetail color={activeSection === 'message' ? '#f8ce4e' : 'black'} />}  disableRipple/>
@@ -105,7 +105,7 @@ function BotNavBar({ onSectionChange }) {
           // onClick={() => setActiveSection('menu')}
           // selected={activeSection === 'menu'}
           onClick={() => handleSectionClick('mobileMenu')}
-          sx={{ fontSize: 25 }} 
+          sx={{ fontSize: 25, mr: 2 }} 
           icon={<CgMenu color="#f8ce4e"/>} 
           disableRipple/>
       </BottomNavigation>
