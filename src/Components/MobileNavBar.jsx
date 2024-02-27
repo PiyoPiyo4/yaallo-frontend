@@ -6,11 +6,11 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 // import HomeIcon from '@mui/icons-material/Home';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 // import SettingsIcon from '@mui/icons-material/Settings';
 import logo from '../assets/yaallo.jpeg'
 import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 import { Box } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -29,10 +29,15 @@ const theme = createTheme({
     secondary: {
       main: '#000', 
     },
-    // bottomNavIcon: {
-    //   main: '#fff', 
-    //   selected: '#f8ce4e',
-    // },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-notchedOutline': {
+            border: 'none',
+          },
+        },
+      },
+    },
   },
 });
 
@@ -51,16 +56,16 @@ function BotNavBar({ onSectionChange }) {
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <img src={logo} style={{ height: '40px', cursor: 'pointer' }} alt='LogoYaallo'/>
               <TextField
-                sx={{ ml: 2 }}
+                sx={{ ml: 2, backgroundColor: '#d9d9d9', borderRadius: '5%' }}
                 size="small"
                 placeholder="Search"
-                InputProps={{
-                  startAdornment: (
-                    <IconButton edge="start" sx={{ color: 'text.primary' }}>
-                      <SearchIcon />
-                    </IconButton>
-                  ),
-                }}
+                // InputProps={{
+                //   startAdornment: (
+                //     <IconButton edge="start" sx={{ color: 'text.primary' }}>
+                //       <SearchIcon />
+                //     </IconButton>
+                //   ),
+                // }}
               />
               </Box>
           </Typography>
