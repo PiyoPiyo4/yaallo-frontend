@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Divider, Menu, MenuItem, Paper } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from '../assets/yaallo.jpeg'
 import { ButtonGroup } from '@mui/material';
