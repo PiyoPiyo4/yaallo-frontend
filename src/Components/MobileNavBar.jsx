@@ -50,16 +50,17 @@ function BotNavBar({ onSectionChange }) {
   };
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position="static" sx={{ boxShadow: 'none' }}>
+      <AppBar position="static" sx={{ boxShadow: 'none' , mt: 1 }}>
         <Toolbar>
           
           <Typography variant="h6" noWrap component="div" sx={{flexGrow : 3, flexBasis: 0}}>
             {/* <Box sx={{ display: 'flex', justifyContent: 'space-between' }}> */}
-              <img src={logo} style={{ height: '40px', cursor: 'pointer' }} alt='LogoYaallo'/>
+              <img src={logo} style={{ height: '50px', cursor: 'pointer' }} alt='LogoYaallo'/>
               <TextField
-                sx={{ ml: 2, mt: 2  , backgroundColor: '#d9d9d9', borderRadius: '5%',
+                sx={{ ml: 2, mt: 2  , backgroundColor: '#d9d9d9', borderRadius: '5px',
                 '& .MuiInputBase-root': {
-                  height: 15,
+                  height: 20,
+                  width: 200,
                   fontSize: 10,
                 },
                 '& .MuiOutlinedInput-notchedOutline': {
