@@ -1,6 +1,6 @@
 import React from 'react';
-import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
+import { Box, Typography, useMediaQuery, Divider, MenuItem  } from '@mui/material';
+
 import { IoMdInformationCircleOutline, IoMdHelpCircleOutline } from "react-icons/io";
 import { GoShieldCheck } from "react-icons/go";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -8,11 +8,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
-// import { IoMdInformationCircleOutline, GoShieldCheck, IoSettingsOutline, MdOutlineMail, IoMdHelpCircleOutline, FiPhoneCall } from 'react-icons/all';
-import { Box, Typography } from '@mui/material';
 import logo from '../assets/yaallo.jpeg'
-import { useMediaQuery } from '@mui/material';
-// import { useLocation, useNavigate } from 'react-router-dom'; // Import for navigation
 
 
 const ItemComponent = ({ title, icon, clickHandler }) => {

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import loadable from '@loadable/component'
-// import { useMediaQuery } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import {Collapse} from '@mui/material';
 import ads from '../assets/yaallo_ads.jpeg'

@@ -6,15 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import MenuIcon from '@mui/icons-material/Menu';
 import { Divider, Menu, MenuItem, Paper } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import SearchIcon from '@mui/icons-material/Search';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import logo from '../assets/yaallo.jpeg'
 import { ButtonGroup } from '@mui/material';
-import './styles/NavBar.css'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import MenuIcon from '@mui/icons-material/Menu';
+import logo from '../assets/yaallo.jpeg'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { IoMdInformationCircleOutline, IoMdHelpCircleOutline } from "react-icons/io";
 import { GoShieldCheck } from "react-icons/go";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -30,6 +28,7 @@ const menuItems = [
   { title: 'Contact Us', icon: <FiPhoneCall size="25px" /> },
 ];
 
+// Each item components for the menu dropdown
 const ItemComponent = ({ title, icon, clickHandler }) => {
   return (
     <MenuItem onClick={clickHandler} sx={{ '&:hover': { backgroundColor: 'transparent'} }}>
@@ -71,15 +70,6 @@ const theme = createTheme({
         },
       },
     },
-    // MuiOutlinedInput: {
-    //   styleOverrides: {
-    //     root: {
-    //       '& .MuiOutlinedInput-notchedOutline': {
-    //         border: 'none',
-    //       },
-    //     },
-    //   },
-    // },
   },
 });
 
