@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React , {useState} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   TextField,
   Button,
@@ -9,8 +9,34 @@ import RightLogin from '../assets/rightbigvector.svg';
 import LeftLogin from '../assets/leftbigvector.svg';
 import logo from '../assets/yaallo.jpeg'
 
+import { APICall } from '../helperFunction.js'
+
+const api_key = process.env.SENDGRID_API_KEY
+
+
 const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const email = location.state?.email;
+  const [newpass, setNewPass] = useState('');
+  const newPassSent = async (email, newpass) => {
+      let data = null;
+      try {
+        const requestBody = {
+          email: email,
+          newPassword: newpass,
+        };
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${api_key}`
+        };
+        data = await APICall(requestBody, '/reset-password', 'POST', headers);
+        console.log(data)
+        navigate('/login')
+      } catch (err) {
+        alert(err);
+      }
+    }
   return (
     <div style={{ overflow: 'hidden'}}>
       <Box sx={{ minHeight: '100vh', minWidth: '100vw', position: 'relative'}}>
@@ -25,11 +51,11 @@ const LoginPage = () => {
             <Box sx={{textAlign: 'center', gap: '1.5rem', flexDirection: 'column', width: '100%', height: '100%', display:'flex'}}>
               <Box sx={{textAlign: 'left' , marginLeft: '2px'}}>
                 <h1 style={{ fontSize: '40px', fontWeight: '500', marginBottom: 0, marginLeft: -2}}>Forgot Password </h1>
-                <span style={{ fontSize:'13px'}}>Please enter your registered email address below to receive a password reset code </span>
+                <span style={{ fontSize:'13px'}}>Please enter your new password for the registered email </span>
               </Box>
               <TextField 
                 fontSize= '14px'
-                placeholder='Email Address'
+                placeholder='New Password'
                 sx={{ mt: 2 , backgroundColor: '#F5F5F5', borderRadius: '40px', fontFamily: 'Inter',
                 '& .MuiInputBase-root': {
                   height: '50px',
@@ -47,6 +73,8 @@ const LoginPage = () => {
                     },
                 },
               }}
+              value={newpass}
+              onChange={(e) => setNewPass(e.target.value)}
               />
               <Button
                 sx={{
@@ -61,7 +89,8 @@ const LoginPage = () => {
                   boxShadow: '0px 4px 8px 0px #00000040',
                 }}
                 disableRipple
-              > Send Code </Button>
+                onClick={() => newPassSent(email, newpass)}
+              > Reset Password </Button>
             </Box>
           </Box>
         </Box>

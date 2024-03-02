@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {Box, Grid, Paper, Button} from '@mui/material';
 import RightLogin from '../assets/rightvector.svg'
 import LeftLogin from '../assets/leftvector.svg'
+import TimeLine from '../Components/TimeLine';
 
 const DesktopContent = () => {
   const navigate = useNavigate();
@@ -47,16 +48,24 @@ const DesktopContent = () => {
       </Grid>
       <Grid item xs={12} sm={4}>
         <Paper sx={{ height: '100%' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <p>Middle</p>
+          <Box sx={{justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <TimeLine />
           </Box>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <Paper sx={{ height: '100%' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <p>Right</p>
-            <img src="your_image.jpg" alt="vid" width="100%" height="auto" />
+        <Paper sx={{ height: '100%',  backgroundColor: 'transparent'  }}>
+          <Box sx={{justifyContent: 'center', alignItems: 'center' }}>
+            <video autoPlay muted loop playsinline style={{ 
+              // width: 'auto', 
+              // marginLeft: '8px',
+              maxWidth: '300px',
+              // marginTop: '5px',
+              // height: '200px',
+              /* border-radius: 50%; */
+            }}>
+              <source src="https://yaallo.com/image/vid.mp4" type="video/mp4"/>
+            </video>
           </Box>
         </Paper>
       </Grid>

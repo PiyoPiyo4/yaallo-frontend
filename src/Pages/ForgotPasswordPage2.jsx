@@ -1,5 +1,5 @@
-import React , {useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   TextField,
   Button,
@@ -7,32 +7,35 @@ import {
 } from '@mui/material';
 import RightLogin from '../assets/rightbigvector.svg';
 import LeftLogin from '../assets/leftbigvector.svg';
-import logo from '../assets/yaallo.jpeg'
-import PasswordField from '../Components/PasswordField';
 import { APICall } from '../helperFunction.js'
+import logo from '../assets/yaallo.jpeg'
 
-const LoginPage = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const login = async (email, password) => {
-    let data = null;
-    try {
-      const requestBody = {
-        email: email,
-        password: password ,
-      };
-      const headers = {
-        'Content-Type': 'application/json',
-      };
-      data = await APICall(requestBody, '/login', 'POST', headers);
-      console.log(data)
-    } catch (err) {
-      alert(err);
-    }
-  }
+const api_key = process.env.SENDGRID_API_KEY
 
-  return (
+
+const ForgotPasswordPage2 = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const email = location.state?.email;
+    const [otp, setOtp] = useState('');
+    const otpSent = async (email, otp) => {
+        let data = null;
+        try {
+          const requestBody = {
+            email: email,
+            otp: otp
+          };
+          const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${api_key}`
+          };
+          data = await APICall(requestBody, '/otp-verify', 'POST', headers);
+          navigate('/forgot-password/reset', { state: { email } });
+        } catch (err) {
+          alert(err);
+        }
+      }
+    return (
     <div style={{ overflow: 'hidden'}}>
       <Box sx={{ minHeight: '100vh', minWidth: '100vw', position: 'relative'}}>
         <Box sx={{top: 0, right: 0, position: 'absolute'}}>
@@ -44,10 +47,13 @@ const LoginPage = () => {
         <Box sx={{ justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh', display: 'flex', position:'absolute' }}>
           <Box sx= {{width: '350px', padding: '2rem', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
             <Box sx={{textAlign: 'center', gap: '1.5rem', flexDirection: 'column', width: '100%', height: '100%', display:'flex'}}>
-              <h1 style={{ fontSize: '40px', fontWeight: '500'}}> Sign In </h1>
+              <Box sx={{textAlign: 'left' , marginLeft: '2px'}}>
+                <h1 style={{ fontSize: '40px', fontWeight: '500', marginBottom: 0, marginLeft: -2}}>Forgot Password </h1>
+                <span style={{ fontSize:'13px'}}>Please enter your OTP that has been sent to the email! </span>
+              </Box>
               <TextField 
                 fontSize= '14px'
-                placeholder='Email Address'
+                placeholder='OTP Code'
                 sx={{ mt: 2 , backgroundColor: '#F5F5F5', borderRadius: '40px', fontFamily: 'Inter',
                 '& .MuiInputBase-root': {
                   height: '50px',
@@ -64,16 +70,10 @@ const LoginPage = () => {
                     borderRadius: '40px',
                     },
                 },
-              }}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+                }}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
               />
-              <div onChange={(e) => setPassword(e.target.value)}>
-                <PasswordField value={password}  />
-              </div>
-              <Box sx={{textAlign: 'right', fontSize: '12px', textDecoration:'underline', mt: -4, fontWeight: '400'}}>
-                <p onClick={() => navigate('/forgot-password')}> Forgot Password? </p>
-              </Box>
               <Button
                 sx={{
                   borderRadius: '40px', 
@@ -86,10 +86,9 @@ const LoginPage = () => {
                   height: '57.37px',
                   boxShadow: '0px 4px 8px 0px #00000040',
                 }}
-                onClick={ () => login(email, password)}
                 disableRipple
-              > Login </Button>
-              <p style={{ fontSize: '16px'}}> <span>Don't have an account? </span> <span style={{ color:'#FEDD12', textDecoration: 'underline', fontWeight: '500' }} onClick={() => navigate('/signup')} >Sign Up</span> </p>
+                onClick={() => otpSent(email, otp)}
+              > Verify </Button>
             </Box>
           </Box>
         </Box>
@@ -101,4 +100,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage2;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Box, Grid, Paper, Button} from '@mui/material';
+import TimeLine from '../Components/TimeLine';
 
 const DesktopContent = () => {
   const navigate = useNavigate();
@@ -29,23 +30,14 @@ const DesktopContent = () => {
                   }} disableRipple onClick={() => navigate('/signup')}> 
                   Sign Up </Button>
     </Box>
-    <Grid container spacing={2} sx={{mt: 2, width: '100%'}}>
+    <Grid sx={{mt: 2, width: '100%'}}>
       <Grid item xs={12} sm={4}>
-        <Paper sx={{ height: '100%' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <p>Middle</p>
+        <Paper sx={{ height: '100%', width: '100%' }}>
+          <Box sx={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+            <TimeLine />
             {/* <Typography variant="h5">Pagination</Typography> */}
             {/* Replace with your pagination component */}
             {/* <Pagination count={10} color="primary" /> */}
-          </Box>
-        </Paper>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <Paper sx={{ height: '100%' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <p>Right</p>
-            {/* Replace with your image or video component */}
-            <img src="your_image.jpg" alt="vid" width="100%" height="auto" />
           </Box>
         </Paper>
       </Grid>

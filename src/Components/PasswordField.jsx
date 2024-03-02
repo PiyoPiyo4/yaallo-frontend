@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import { BsEyeSlash } from "react-icons/bs";
 import { BsEye } from "react-icons/bs";
 
-const PasswordField = () => {
+const PasswordField = ({ value, onChange }) => {
   const [values, setValues] = React.useState({
     password: '',
     showPassword: false,
@@ -28,8 +28,8 @@ const PasswordField = () => {
       fontSize= '14px'
       placeholder='Password'
       type={values.showPassword ? 'text' : 'password'}
-      value={values.password}
-      onChange={handleChange('password')}
+      value={value}
+      onChange={onChange}
       sx={{
         backgroundColor: '#F5F5F5',
         borderRadius: '40px',
