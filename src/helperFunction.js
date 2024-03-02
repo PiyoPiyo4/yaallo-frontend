@@ -1,4 +1,4 @@
-const backendServer = `http://localhost:5000`
+// const backendServer = `http://localhost:5000`
 
 // General API-call boilerplate function
 const APICall = (requestBody, path, methodType, headersData) => {
@@ -9,7 +9,7 @@ const APICall = (requestBody, path, methodType, headersData) => {
         headers: headersData,
         body: requestBody,
       }
-      fetch(`http://localhost:5000${path}`, init)
+      fetch(`https://yaallo-backend.vercel.app/${path}`, init)
         .then(response => {
           if (response.status === 200) {
             return response.json().then(resolve);

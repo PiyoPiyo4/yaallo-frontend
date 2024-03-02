@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   TextField,
@@ -13,7 +13,7 @@ import logo from '../assets/yaallo.jpeg'
 
 import PasswordField from '../Components/PasswordField';
 import { APICall } from '../helperFunction.js'
-import SignUpBrandPage from './SignUpBrandPage';
+// import SignUpBrandPage from './SignUpBrandPage';
 
 const TextBox = ({ placeholder, onChange }) => (
 <TextField

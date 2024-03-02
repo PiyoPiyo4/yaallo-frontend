@@ -30,6 +30,7 @@ const ForgotPasswordPage2 = () => {
             'Authorization': `Bearer ${api_key}`
           };
           data = await APICall(requestBody, '/otp-verify', 'POST', headers);
+          console.log(data)
           navigate('/forgot-password/reset', { state: { email } });
         } catch (err) {
           alert(err);
