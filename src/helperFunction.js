@@ -9,7 +9,7 @@ const APICall = (requestBody, path, methodType, headersData) => {
         headers: headersData,
         body: requestBody,
       }
-      fetch(`https://yaallo-backend-988400dc7b44.herokuapp.com/${path}`, init)
+      fetch(`https://yaallo-backend-988400dc7b44.herokuapp.com${path}`, init)
         .then(response => {
           if (response.status === 200) {
             return response.json().then(resolve);
