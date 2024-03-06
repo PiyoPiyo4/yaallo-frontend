@@ -33,7 +33,7 @@ const LoginSignUpBox = ({setToken}) => {
   }
   return (
     <Paper sx={{ height: '100%', display: 'flex', justifyContent: 'center', backgroundColor: 'transparent', boxShadow: 'none',   }}>
-      <Box sx={{ maxWidth: '95%',height: '550px', flex: 2, borderRadius: '5px', position: 'relative', backgroundColor: '#fff' }} alt='logo'>
+      <Box sx={{ maxWidth: '95%',height: '550px', flex: 2, borderRadius: '5px', position: 'relative', backgroundColor: '#fff', mt: 2 }} alt='logo'>
         <Box sx={{top: 0, right: 0,position: 'absolute'}}>
             <img src={Rec} alt='bg' style={{ width: '100%' }}/>
             <img src={Defaultpp} alt='logo' style={{ position: 'absolute', top: '100%', left: '15%', transform: 'translate(-50%, -50%)'}}/>

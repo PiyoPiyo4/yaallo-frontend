@@ -36,7 +36,7 @@ const LoginSignUpBox = ({setToken}) => {
   }
   return (
     <Paper sx={{ height: '100%', display: 'flex', justifyContent: 'center', backgroundColor: 'transparent', boxShadow: 'none',   }}>
-      <Box sx={{ maxWidth: '95%',height: '550px', flex: 2, borderRadius: '5px', position: 'relative', backgroundColor: '#fff' }}>
+      <Box sx={{ maxWidth: '95%',height: '550px', flex: 2, borderRadius: '5px', position: 'relative', backgroundColor: '#fff', mt: 2 }}>
         <Box sx={{top: 0, right: 0,position: 'absolute'}}>
             <img src={Rec} alt='bg' style={{ width: '100%' }} />
             <img src={Defaultpp}   style={{ position: 'absolute', top: '100%', left: '15%', transform: 'translate(-50%, -50%)'}} alt='logo'/>
@@ -44,7 +44,7 @@ const LoginSignUpBox = ({setToken}) => {
         <Box sx={{
           // border: '1px solid black',
           width: '100%',
-          top: '20%',
+          top: '21%',
           position: 'relative',
           display: 'flex',
           justifyContent: 'flex-end',

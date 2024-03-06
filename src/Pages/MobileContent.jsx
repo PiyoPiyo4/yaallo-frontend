@@ -20,8 +20,8 @@ const DesktopContent = () => {
   }, [token, acc_type])
   return (
   <div style={{ overflow: 'hidden'}}>
-    { !token &&
-      <Box sx={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end', 
+    {!token &&
+      (<Box sx={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end', 
               alignItems: 'center', height: '55px', backgroundColor: 'white', paddingRight: '5px', fontSize: '12px'}}>
       <Button sx={{borderRadius: '8px', 
                   '&:hover': { backgroundColor: 'transparent'},
@@ -43,10 +43,9 @@ const DesktopContent = () => {
                   fontSize: '12px',
                   }} disableRipple onClick={() => navigate('/signup')}> 
                   Sign Up </Button>
-    </Box>}
+    </Box>)}
     {(token && acc_type === 'BRAND') && <BrandBox setToken={setToken} /> }
     {(token && acc_type === 'USER') && <UserBox setToken={setToken}/>}
-    <BrandBox />
     <Grid sx={{mt: 2, width: '100%'}}>
       <Grid item xs={12} sm={4}>
         <Paper sx={{ height: '100%', width: '100%' }}>
