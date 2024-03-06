@@ -9,20 +9,20 @@ import {
   CardContent,
   Box,
   Divider,
+  TextField,
+  useMediaQuery,
 } from "@mui/material";
 import { APICall } from '../helperFunction.js'
 import moment from 'moment-timezone';
 import momentTimezone from 'moment-timezone';
 import { FaRegHeart } from "react-icons/fa";
 import { v4 as uuidv4 } from 'uuid';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Arrow from '../assets/arrowright.svg';
 
 export default function ImageGrid() {
   let [currPage, setCurrPage] = useState(1);
   const [posts, setPosts] = useState([]);
-  
-  // useEffect(() => {
-  //   console.log('Count changed:', currPage);
-  // }, [currPage]); // Dependency array ensures effect runs on currPage change
 
   async function getPosts() {
     // let fetchedData = [{}];
@@ -88,6 +88,8 @@ function Image({ post }) {
     const formattedTime = backendMoment.fromNow();
     return formattedTime
   }
+  const mobileScreen = useMediaQuery('(max-width: 850px)');
+
   return (
     <Card sx={{ 
         // border: '2px solid black', 
@@ -135,10 +137,30 @@ function Image({ post }) {
             <p style={{ fontSize: '13px'}}> Comment </p>
           </Box>
           <Divider variant="middle"  component="div" sx={{ borderColor: 'black'}}/>
-          <Box sx={{display: 'flex', gap: '1.5rem', ml: 3}}>
-            <p> Like count </p>
-            <p> Share </p>
-            <p> Comment </p>
+          <Box sx={{display: 'flex', ml: 2, pt: '10px', pb: '10px', justifyContent: 'space-between', mr: 2}}>
+            <AccountCircleIcon />
+            <TextField
+            sx={{ backgroundColor: '#d9d9d9', borderRadius: '10px',
+              '& .MuiInputBase-root': {
+                height: 25,
+                width: mobileScreen ? '300px' : '450px',
+                fontSize: 13,
+                lineHeight: 22
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                  border: 'none',
+              },
+              '& .Mui-focused': {
+                '& .MuiOutlinedInput-notchedOutline': {
+                  border: '2px solid black !important',
+                  },
+              },
+            }}
+            placeholder="Comment"
+          />
+          <Box sx={{ backgroundColor: '#F5BA04', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '25px' , width: '25px'}}>
+            <img src={Arrow} alt='arrow' style={{ height: '15px' , width: '15px'}}/>
+          </Box>
           </Box>
         </Box>
       </CardContent>
