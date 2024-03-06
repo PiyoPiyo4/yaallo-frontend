@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {Box, Grid, Paper, Button} from '@mui/material';
+import {Box, Paper, Button} from '@mui/material';
 import RightLogin from '../assets/rightvector.svg'
 import LeftLogin from '../assets/leftvector.svg'
-import { APICall } from '../helperFunction.js'
+// import { APICall } from '../helperFunction.js'
 
 const LoginSignUpBox = () => {
   const navigate = useNavigate();
