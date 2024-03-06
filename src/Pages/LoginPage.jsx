@@ -26,7 +26,10 @@ const LoginPage = () => {
         'Content-Type': 'application/json',
       };
       data = await APICall(requestBody, '/login', 'POST', headers);
-      console.log(data)
+      // console.log(data);
+      localStorage.setItem('token', data['token']);
+      localStorage.setItem('acc_type', data['acc_type']);
+      navigate('/')
     } catch (err) {
       alert(err);
     }

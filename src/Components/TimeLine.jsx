@@ -18,9 +18,9 @@ export default function ImageGrid() {
   let [currPage, setCurrPage] = useState(1);
   const [posts, setPosts] = useState([]);
   
-  useEffect(() => {
-    console.log('Count changed:', currPage);
-  }, [currPage]); // Dependency array ensures effect runs on currPage change
+  // useEffect(() => {
+  //   console.log('Count changed:', currPage);
+  // }, [currPage]); // Dependency array ensures effect runs on currPage change
 
   async function getPosts() {
     // let fetchedData = [{}];
@@ -34,7 +34,7 @@ export default function ImageGrid() {
       };
       // console.log('here123');
       let data = await APICall(requestBody, `/posts`, 'POST', headers);
-      console.log(data)
+      // console.log(data)
       if (data.length > 0) {
         setPosts([...posts, ...data]);
         setCurrPage(currPage + 1);
@@ -88,7 +88,7 @@ function Image({ post }) {
   }
   return (
     <Card sx={{ 
-        border: '2px solid black', 
+        // border: '2px solid black', 
         '& .MuiCardContent-root:last-child': {
         paddingBottom: '0px'
        },

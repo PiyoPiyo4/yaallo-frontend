@@ -1,13 +1,27 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {Box, Grid, Paper, Button} from '@mui/material';
-import RightLogin from '../assets/rightvector.svg'
-import LeftLogin from '../assets/leftvector.svg'
+import React, { useEffect, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+import {Box, Grid, Paper, 
+  // Button
+} from '@mui/material';
+// import RightLogin from '../assets/rightvector.svg'
+// import LeftLogin from '../assets/leftvector.svg'
 import TimeLine from '../Components/TimeLine';
+import LoginSignUpBox from '../Components/DesktopLoginSignUpBox'
+import BrandBox from '../Components/DesktopBrandBox'
+import UserBox from '../Components/DesktopUserBox'
 // import { APICall } from '../helperFunction.js'
 
 const DesktopContent = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const [token, setToken] = useState('');
+  const [acc_type, setAccType] = useState('')
+  
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    const storedAccType = localStorage.getItem('acc_type');
+    setToken(storedToken);
+    setAccType(storedAccType);
+  }, [token, acc_type])
   // async function dataApp() {
   //   // let fetchedData = [{}];
   //   try {
@@ -27,61 +41,25 @@ const DesktopContent = () => {
   // }
   return (
   <div style={{ overflow: 'hidden'}}>
-    <Grid container spacing={2} sx={{mt: 2, width: '100%'}}>
-      <Grid item xs={12} sm={4}>
-        <Paper sx={{ height: '100%', display: 'flex', justifyContent: 'flex-end', backgroundColor: 'transparent'  }}>
-          <Box sx={{ maxWidth: '241px', height: '500px', flex: 2, borderRadius: '5px', position: 'relative', backgroundColor: '#fff' }}>
-            <Box sx={{top: 0, right: 0, position: 'absolute'}}>
-                <img src={RightLogin} alt='bg' style={{ width: '150px', height: 'auto'}}/>
-            </Box>
-            <Box sx={{display: 'flex', 
-                      justifyContent: 'center', 
-                      flexDirection: 'column', 
-                      alignItems: 'stretch', 
-                      padding: '0.5rem',
-                      gap:'0.5rem',
-                      height: '100%'}}>
-                <p style={{textAlign: 'center', fontWeight: 'bold'}}>Fashion Lifestyle Platform</p>
-                <Button sx={{borderRadius: '40px', 
-                            '&:hover': { backgroundColor: 'transparent'},
-                            backgroundColor: '#FEDD12',
-                            textTransform: 'none',
-                            color : 'white',
-                            }} disableRipple onClick={() => navigate('/login')}>
-                            Login</Button>
-                <Button sx={{borderRadius: '40px', 
-                            border:'2px solid #fedd12', 
-                            marginBottom: '60px', 
-                            '&:hover': { backgroundColor: 'transparent'},
-                            textTransform: 'none',
-                            color: 'black',
-                            }} disableRipple onClick={() => navigate('/signup')}> 
-                            Sign up </Button>
-            </Box>
-            <Box sx={{bottom: 0, left:0 , position: 'absolute'}}>
-                <img src={LeftLogin} alt='bg' style={{ width: '150px', height: 'auto', display: 'block'}}/>
-            </Box>
-          </Box>
-        </Paper>
+    <Grid container spacing={2} sx={{mt: 2, width: '100%', boxShadow: 'none' }}>
+      <Grid item xs={12} sm={4} >
+        {(token && acc_type === 'BRAND') && <BrandBox setToken={setToken} /> }
+        {(token && acc_type === 'USER') && <UserBox setToken={setToken}/>}
+        {!token && <LoginSignUpBox />}
       </Grid>
       <Grid item xs={12} sm={4}>
-        <Paper sx={{ height: '100%' }}>
-          <Box sx={{justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <Paper sx={{ height: '100%', backgroundColor: 'transparent', boxShadow: 'none' }}>
+          <Box sx={{justifyContent: 'center', alignItems: 'center', height: '100%', backgroundColor: 'transparent' }}>
             {/* <Button onClick={() => dataApp()} sx={{ backgroundColor: 'black'}}></Button> */}
             <TimeLine />
           </Box>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <Paper sx={{ height: '100%',  backgroundColor: 'transparent'  }}>
+        <Paper sx={{ height: '100%',  backgroundColor: 'transparent', boxShadow: 'none'  }}>
           <Box sx={{justifyContent: 'center', alignItems: 'center' }}>
-            <video autoPlay muted loop playsinline style={{ 
-              // width: 'auto', 
-              // marginLeft: '8px',
+            <video autoPlay muted loop playsInline style={{ 
               maxWidth: '300px',
-              // marginTop: '5px',
-              // height: '200px',
-              /* border-radius: 50%; */
             }}>
               <source src="https://yaallo.com/image/vid.mp4" type="video/mp4"/>
             </video>

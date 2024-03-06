@@ -69,7 +69,8 @@ const LoginPage = () => {
       };
       data = await APICall(requestBody, '/brand-signup', 'POST', headers);
       console.log(data)
-      // If Success then go to home
+      localStorage.setItem('token', data['token']);
+      localStorage.setItem('acc_type', data['acc_type']);
       navigate('/')
     } catch (err) {
       alert(err);
